@@ -1,0 +1,43 @@
+body{
+    margin:200px 100px 200px 400px;
+    background-color:#0046FF;
+}
+#mainform,#mainform1
+{
+    background-color: white;
+    height: max-content;
+    width: max-content;
+    border: 2px solid black;
+    padding: 0 40px 0px;
+    margin: 5px;
+    display:inline-block;
+}
+
+input{
+    border:none;
+    outline:none;
+}
+
+button{
+    text-align: center;
+    background-color: rgb(6, 181, 240);
+    color: white;
+    padding: 5px 100px 5px 100px;
+}
+
+#remember
+{
+    padding-bottom: 20px;
+}
+#forget{
+    padding-left: 40px;
+}
+#signup{
+    text-align: center;
+}
+#loginconditions{
+    padding-bottom: 20px;
+}
+i{
+  text-align: right;  
+}

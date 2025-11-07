@@ -1,0 +1,25 @@
+*{
+    background-color:aqua
+}
+
+p{
+    background-color: blueviolet;
+}
+
+#A{
+    background-color: aliceblue;
+    color: blue;
+}
+
+#B{
+    background-color: blue;
+    color:brown
+}
+
+h1{
+    color: darkgreen;
+}
+
+h1.C{
+    color:darkslateblue
+}

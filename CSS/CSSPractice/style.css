@@ -1,0 +1,31 @@
+body{
+    background-color: #070146d0;
+    
+}
+#mainbox
+{
+    height: 60px;
+    width: max-content;
+    border: 5px solid white;
+    background-color: black;
+    margin: auto;
+}
+
+#main{
+    font-size: 25px;
+    color: yellow;
+    padding-right: 200px;
+}
+
+a{
+    color: white;
+    padding-right:200px ;
+    text-decoration: none;
+}
+
+#searchbar{
+    button
+    {
+        background-color: yellow;
+    }
+}
