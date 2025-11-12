@@ -1,0 +1,40 @@
+#box1{
+    width: 20px;
+    height: 20px;
+    position:absolute;
+    border: 2px solid black;
+    animation: myAnimation 3s linear ;
+}
+
+@keyframes myAnimation {
+   0%
+   {
+    top:0px;
+    left: 0px;
+    background-color: red;
+   }
+    25%
+   {
+    top:0px;
+    left: 500px;
+    background-color: green;
+   }
+    50%
+   {
+    top:500px;
+    left: 500px;
+    background-color: aqua;
+   }
+    75%
+   {
+    top:500px;
+    left: 0px;
+    background-color:yellow;
+   }
+    100%
+   {
+    top:0px;
+    left: 0px;
+    background-color: red;
+   } 
+}
