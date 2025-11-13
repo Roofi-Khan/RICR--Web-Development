@@ -8,21 +8,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  text-align: center;
   position: sticky;
   top: 0%;
   z-index: 99%;
   border:1px solid whitesmoke;
-
-
-
-
-   
+  background-color: white;
 }
-#subnav{
+.subnav{
     display: flex;
     justify-content: center;
-    gap: 20px;
+    text-align: center;
+    
 }
 .subhead{
     text-decoration: none;
