@@ -108,11 +108,11 @@ img{
 }
 
 #front4{
-    margin: 0px 40px 0% 40px;
+    margin: 0px 40px;
     padding: 24px;
     display: grid;
     grid-template-columns: auto auto auto auto;
-    grid-template-rows: max-content;
+    gap: 8px;
    
     
     .subfront4{
