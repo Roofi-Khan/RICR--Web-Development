@@ -24,17 +24,3 @@ function para() {
 function changePara(color){
     document.getElementById("lorempara").style.color=color;
 }
-
-
-
-
-
-
-
-// const userColor= document.getElementById("color")
-
-// userColor.addEventListener("change",()=>changeBulbColor(userColor.value));
-
-// function changeBulbColor(color){
-//     document.getElementById("bulb").style.backgroundColor=color;
-// }
