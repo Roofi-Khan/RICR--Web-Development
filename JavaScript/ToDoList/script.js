@@ -2,24 +2,23 @@ function AddTask() {
   const task = document.getElementById("NewTask").value.trim();
 
   console.log(task);
-  if(task)
-  {
+  if (task) {
     const l = document.createElement("li");
-  l.classList.add("p-2", "d-flex", "align-items-center", "border-bottom");
+    l.classList.add("p-2", "d-flex", "align-items-center", "border-bottom");
 
-  const d = document.createElement("div");
-  d.classList.add("w-75");
-  d.innerText = task;
+    const d = document.createElement("div");
+    d.classList.add("w-75");
+    d.innerText = task;
 
-  const b = document.createElement("button");
-  b.classList.add("btn", "btn-danger", "ms-3");
-  // b.innerText="Delete";
-  b.innerHTML = `<i class="bi bi-trash"></i> Delete`;
-  b.onclick = () => {
-    l.remove();
-  };
+    const b = document.createElement("button");
+    b.classList.add("btn", "btn-danger", "ms-3");
+    // b.innerText="Delete";
+    b.innerHTML = `<i class="bi bi-trash"></i> Delete`;
+    b.onclick = () => {
+      l.remove();
+    };
 
-  /* long way to create a delete button in which icon comes first and the content should appear after the icon
+    /* long way to create a delete button in which icon comes first and the content should appear after the icon
        const i=document.createElement("i");
        i.classList.add("bi","bi-trash");
        const s=document.createElement("span");
@@ -28,9 +27,9 @@ function AddTask() {
        b.appendChild(s);
   */
 
-  l.appendChild(d);
-  l.appendChild(b);
-  document.getElementById("TaskList").appendChild(l);
-  document.getElementById("NewTask").value = "";
+    l.appendChild(d);
+    l.appendChild(b);
+    document.getElementById("TaskList").appendChild(l);
+    document.getElementById("NewTask").value = "";
   }
 }
