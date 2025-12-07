@@ -1,0 +1,24 @@
+#heading{
+    margin-left: 400px;
+    margin-bottom: 30px;
+   
+}
+#intro{
+    margin-left: 400px;
+}
+#start
+{
+    margin-left:550px;
+}
+img{
+    width: 250px;
+    height: auto;
+}
+
+.links{
+    color:white;
+}
+.links:hover{
+    color: black;
+    font-size: 20px;
+}
