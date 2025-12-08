@@ -19,7 +19,12 @@
   <body>
     <div class="container d-flex mb-2 mt-4">
       <div id="parent">
-        <select name="state" id="state" class="px-2 py-1 m-3 border-dark w-25 rounded">
+        <select
+          name="state"
+          id="state"
+          class="px-2 py-1 m-3 border-dark w-25 rounded"
+          onclick="search()"
+        >
           <option value="-">-Select-</option>
           <option value="Andhra Pradesh">Andhra Pradesh</option>
           <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -53,9 +58,10 @@
           <option value="Uttarakhand">Uttarakhand</option>
           <option value="West Bengal">West Bengal</option>
         </select>
-        <button onclick="search()" class="bg-primary px-2 py-1 m-3 rounded">Search</button>
-<button onclick="resetFlags()" class="bg-primary px-2 py-1 m-3 rounded">Reset</button>
-      </div> 
+        <button onclick="resetFlags()" class="bg-primary px-2 py-1 m-3 rounded">
+          Reset
+        </button>
+      </div>
       <!-- <button class="btn btn-primary w-25" onclick="search()">Search</button> -->
     </div>
     <div
