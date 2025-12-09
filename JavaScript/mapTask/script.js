@@ -1,4 +1,7 @@
+
 function search() {
+  const audio=document.getElementById("stateSound").play();
+  
   const text = document.getElementById("state").value;
   const img = document.getElementById("div");
   const div = document.createElement("div");
@@ -6,10 +9,10 @@ function search() {
   div.innerText = "🚩";
   div.style.position = "absolute";
   div.style.zIndex = "99";
-  // div.style.width = "999px";
+  div.style.width = "999px";
 
   const temp = document.createElement("p");
-
+  
   if (text === "Andhra Pradesh") {
     div.style.top = "68%";
     div.style.left = "37%";
@@ -144,8 +147,8 @@ function search() {
     img.appendChild(div);
   }
   if (text === "Meghalaya") {
-    div.style.top = "%";
-    div.style.left = "%";
+    div.style.top = "35%";
+    div.style.left = "77%";
     temp.innerText = `State : Meghalaya 
     Capital: Shillong`;
     img.appendChild(div);
@@ -235,13 +238,74 @@ function search() {
   div.addEventListener("mouseleave", () => {
     div.removeChild(temp);
   });
+  
 }
 
 function resetFlags() {
   // Remove all flag markers
+  const sound=document.getElementById("allStatesSound").play();
   const flags = document.querySelectorAll(".flag");
   flags.forEach((flag) => flag.remove());
-
+  
   // Reset dropdown
   document.getElementById("state").value = "-";
+}
+
+function allStates() {
+  const sound=document.getElementById("allStatesSound").play();
+  const img = document.getElementById("div");
+  const states = [
+    { name: "Andhra Pradesh", top: "68%", left: "37%", capital: "Amravati" },
+    { name: "Arunachal Pradesh", top: "26%", left: "85%", capital: "Itanagar" },
+    { name: "Assam", top: "32%", left: "80%", capital: "Dispur" },
+    { name: "Bihar", top: "35%", left: "59%", capital: "Patna" },
+    { name: "Punjab", top: "19%", left: "30%", capital: "Chandigarh" },
+    { name: "Chhattisgarh", top: "47%", left: "47%", capital: "Raipur" },
+    { name: "Delhi", top: "26%", left: "32%", capital: "New Delhi" },
+    { name: "Goa", top: "65.5%", left: "20%", capital: "Panaji" },
+    { name: "Gujarat", top: "42%", left: "15%", capital: "Gandhinagar" },
+    { name: "Haryana", top: "24%", left: "30%", capital: "Chandigarh" },
+    { name: "Himachal Pradesh", top: "16%", left: "34%", capital: "Shimla" },
+    { name: "Jammu & Kashmir", top: "10%", left: "27%", capital: "Srinagar" },
+    { name: "Jharkhand", top: "41%", left: "57%", capital: "Ranchi" },
+    { name: "Karnataka", top: "68%", left: "26%", capital: "Bengaluru" },
+    { name: "Kerala", top: "83%", left: "28%", capital: "Thiruvananthapuram" },
+    { name: "Ladakh", top: "7%", left: "32%", capital: "Leh" },
+    { name: "Madhya Pradesh", top: "42%", left: "35%", capital: "Bhopal" },
+    { name: "Maharashtra", top: "53%", left: "25%", capital: "Mumbai" },
+    { name: "Manipur", top: "37%", left: "84%", capital: "Imphal" },
+    { name: "Meghalaya", top: "35%", left: "77%", capital: "Shillong" },
+    { name: "Mizoram", top: "42%", left: "81%", capital: "Aizawl" },
+    { name: "Nagaland", top: "32%", left: "86%", capital: "Kohima" },
+    { name: "Odisha", top: "50%", left: "50%", capital: "Bhubaneswar" },
+    { name: "Rajasthan", top: "30%", left: "20%", capital: "Jaipur" },
+    { name: "Sikkim", top: "30%", left: "66.8%", capital: "Gangtok" },
+    { name: "Tamil Nadu", top: "80%", left: "35%", capital: "Chennai" },
+    { name: "Telangana", top: "58%", left: "37%", capital: "Hyderabad" },
+    { name: "Tripura", top: "40%", left: "77%", capital: "Agartala" },
+    { name: "Uttar Pradesh", top: "32%", left: "43%", capital: "Lucknow" },
+    { name: "Uttarakhand", top: "21%", left: "39%", capital: "Dehradun" },
+    { name: "West Bengal", top: "41%", left: "65%", capital: "Kolkata" },
+  ];
+  resetFlags();
+  states.forEach(({ name, top, left, capital }) => {
+    const div = document.createElement("div");
+    div.classList.add("flag");
+    div.innerText = "🚩";
+    div.style.position = "absolute";
+    div.style.zIndex = "99";
+    div.style.top = top;
+    div.style.left = left;
+    
+    const temp = document.createElement("p");
+    temp.innerText = `State : ${name}\nCapital: ${capital}`;
+    // temp.style.whiteSpace = "pre-line";
+    img.appendChild(div);
+    div.addEventListener("mouseenter", () => {
+      div.appendChild(temp);
+    });
+    div.addEventListener("mouseleave", () => {
+      div.removeChild(temp);
+    });
+  });
 }

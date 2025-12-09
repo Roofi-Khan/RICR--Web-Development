@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Map of India</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -17,12 +17,20 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <header>
+      <div
+        class="container-fluid bg-primary px-3 py-2 text-center display-6 fw-bold text-light"
+      >
+        Indian Political Map
+      </div>
+    </header>
+
     <div class="container d-flex mb-2 mt-4">
       <div id="parent">
         <select
           name="state"
           id="state"
-          class="px-2 py-1 m-3 border-dark w-25 rounded"
+          class="px-2 py-1 m-1 border-dark w-25 rounded"
           onclick="search()"
         >
           <option value="-">-Select-</option>
@@ -58,22 +66,39 @@
           <option value="Uttarakhand">Uttarakhand</option>
           <option value="West Bengal">West Bengal</option>
         </select>
-        <button onclick="resetFlags()" class="bg-primary px-2 py-1 m-3 rounded">
+        <button
+          onclick="resetFlags()"
+          class="btn btn-primary text-white rounded-5 px-4 py-2 my-1 ms-2"
+          id="reset"
+        >
           Reset
         </button>
+        <button
+          class="btn btn-primary text-white rounded-5 px-4 py-2 my-1 mx-2"
+          onclick="allStates()"
+          id="allStates"
+        >
+          All States
+        </button>
       </div>
-      <!-- <button class="btn btn-primary w-25" onclick="search()">Search</button> -->
     </div>
     <div
       class="d-flex justify-content-center"
       id="div"
-      class="relative"
       style="position: relative"
     >
       <img src="./Map.jpg" alt="" id="img" />
-      <!-- <div style="position: absolute; top: 80%; left: 35%">⛳️</div> -->
     </div>
-
+    <audio
+      src="./button-click-289742.mp3"
+      id="stateSound"
+      preload="auto"
+    ></audio>
+    <audio
+      src="./new-notification-025-380251-[AudioTrimmer.com].mp3"
+      id="allStatesSound"
+      preload="auto"
+    ></audio>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
