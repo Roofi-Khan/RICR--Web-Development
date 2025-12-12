@@ -35,8 +35,8 @@ function Download() {
 
   anchorTag.href=URL.createObjectURL(blob);
   anchorTag.download="data.csv";
-  document.body.appendChild(anchorTag)
+ 
   anchorTag.click();
-  document.body.remove(anchorTag);
+ localStorage.removeItem("PasswordManager");
 //   localStorage.removeI
 }
