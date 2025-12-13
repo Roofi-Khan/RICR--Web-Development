@@ -7,7 +7,6 @@ function submit() {
     alert("Enter a valid number");
     return;
   }
-
   if (num > rn) {
     const l = document.getElementById("result");
     const p = document.createElement("p");
