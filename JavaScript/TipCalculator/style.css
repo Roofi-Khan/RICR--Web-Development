@@ -1,0 +1,16 @@
+#heading{
+   background-color: orange;
+   border-radius: 25px 25px 0px 0px;
+}
+.inputField
+{
+    border: none;
+    border-bottom: 1px solid blue ;
+}
+body{
+    background-color: darkblue;
+    
+}
+#calculate{
+    background-color: mediumturquoise;
+}
