@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Electricity Bill Calculator</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container w-50 m-5 py-2 px-3 border border-dark">
+      <div class="d-flex">
+        <label for="units" class="form-label">ElectricityUnits</label>
+        <input type="number" id="units" class="form-control" />
+      </div>
+      <div
+        class="container w-25 text-center d-flex justify-content-center align-items-center"
+      >
+        <button
+          class="bg-primary p-1 border-0 rounded my-2 me-1"
+          onclick="calculate()"
+        >
+          Calculate
+        </button>
+        <button class="bg-primary p-1 border-0 rounded my-2 me-1">Reset</button>
+      </div>
+
+      <!-- <div class="container d-grid">
+        <div class="row border border-dark mt-1">
+          <div class="col-6 border">Units</div>
+          <div class="col-6">Charge</div>
+        </div>
+
+        <div class="row border border-dark mt-1">
+          <div class="col-6 border units1">0</div>
+          <div class="col-6">0</div>
+        </div>
+
+        <div class="row border border-dark mt-1">
+          <div class="col-6 border units1">0</div>
+          <div class="col-6">0</div>
+        </div>
+
+        <div class="row border border-dark mt-1">
+          <div class="col-6 border">0</div>
+          <div class="col-6">0</div>
+        </div>
+
+      </div> -->
+
+      <label for="result" id="result"></label>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
