@@ -13,47 +13,34 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container w-50 m-5 py-2 px-3 border border-dark">
-      <div class="d-flex">
-        <label for="units" class="form-label">ElectricityUnits</label>
-        <input type="number" id="units" class="form-control" />
+
+    <header>
+      <nav class="text-white text-center py-3 fs-2 fw-semibold">
+        Electricity Bill Calculator
+      </nav>
+    </header>
+    
+    <div class="container w-75 py-3 px-3 border border-danger border-4 rounded shadow" id="mainDiv">
+      <div class="d-flex align-items-center">
+        <label for="units" class="form-label w-25 fs-3">Electricity Units:</label>
+        <input type="number" id="units" class="form-control border border-dark"/>
       </div>
       <div
-        class="container w-25 text-center d-flex justify-content-center align-items-center"
+        class="container w-25 text-center d-flex justify-content-center align-items-center mt-3"
       >
         <button
-          class="bg-primary p-1 border-0 rounded my-2 me-1"
+          class="bg-primary px-2 py-1 border-0 rounded my-2 me-1 text-white"
           onclick="calculate()"
         >
           Calculate
         </button>
-        <button class="bg-primary p-1 border-0 rounded my-2 me-1">Reset</button>
+        <button class="bg-primary px-2 py-1 border-0 rounded my-2 me-1 text-white" onclick="reset()">Reset</button>
       </div>
 
-      <!-- <div class="container d-grid">
-        <div class="row border border-dark mt-1">
-          <div class="col-6 border">Units</div>
-          <div class="col-6">Charge</div>
-        </div>
+      <div class="container w-75 mt-3 pb-4" id="result">
+        <!-- Result -->
+      </div>
 
-        <div class="row border border-dark mt-1">
-          <div class="col-6 border units1">0</div>
-          <div class="col-6">0</div>
-        </div>
-
-        <div class="row border border-dark mt-1">
-          <div class="col-6 border units1">0</div>
-          <div class="col-6">0</div>
-        </div>
-
-        <div class="row border border-dark mt-1">
-          <div class="col-6 border">0</div>
-          <div class="col-6">0</div>
-        </div>
-
-      </div> -->
-
-      <label for="result" id="result"></label>
     </div>
 
     <script

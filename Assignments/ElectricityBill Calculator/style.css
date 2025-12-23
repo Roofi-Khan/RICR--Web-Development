@@ -1,0 +1,19 @@
+#mainDiv{
+    margin: 100px 50px 100px 200px;
+    background-color: whitesmoke;
+    
+}
+
+body{
+     background: url(./elecricity.jpg);
+    background-size: cover;
+    
+}
+
+#eImg{
+    width: 7vh;
+    border-radius: 50%;
+}
+nav{
+    background-color: rgb(229, 68, 68);
+}
