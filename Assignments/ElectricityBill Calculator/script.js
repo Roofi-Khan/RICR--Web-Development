@@ -2,16 +2,16 @@ function calculate() {
   const units = Number(document.getElementById("units").value);
   const l=document.getElementById("result");
   const unit = document.createElement("div");
-  unit.classList.add("container", "d-flex");
+  unit.classList.add("container", "d-flex", "w-25");
   let charge = 0;
   if (units <= 50) {
     charge = units * 0.5;
-    const p1 = document.createElement("p");
-    p1.innerText = `${units}`;
-    const p2=document.createElement("p");
-    p2.innerText=`${charge}`;
-    unit.appendChild(p1);
-    unit.appendChild(p2);
+    const d1 = document.createElement("div");
+    d1.innerText = `${units}`;
+    const d2=document.createElement("div");
+    d2.innerText=`${charge}`;
+    unit.appendChild(d1);
+    unit.appendChild(d2);
     l.appendChild(unit);
   }
   if (units <= 200) {
