@@ -1,14 +1,30 @@
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Home from "./pages/home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Product from "./pages/Product";
+
 
 function App() {
-  let a = 5;
-  let b = 10;
-
-  console.log(a + b);
   return (
     <>
-      <h1 id="head">Hello World</h1>
-      <div>this is my react app</div>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/about" element={<About/>} />
+          <Route path="/product" element={<Product/>} />
+          <Route path="/contact" element={<Contact/>} />
+        </Routes>
+
+        <Footer />
+      </BrowserRouter>
     </>
   );
 }
