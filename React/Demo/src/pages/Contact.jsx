@@ -8,12 +8,27 @@ const Contact = () => {
     subject: "",
     city: "",
     message: "",
+    religion: "",
+    gender: "",
+    skill: [],
   });
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setContactData((previousData) => ({ ...previousData, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    if (type === "checkbox") {
+      let temp = contactData.skill;
+      if (checked) {
+        temp.push(value);
+        setContactData((previousData) => ({ ...previousData, [name]: temp }));
+      } else {
+        temp = Object.values(temp);
+        temp = temp.filter((word) => word!==value);
+        setContactData((previousData) => ({ ...previousData, [name]: temp }));
+      }
+    } else {
+      setContactData((previousData) => ({ ...previousData, [name]: value }));
+    }
   };
   const handleClearForm = () => {
     setContactData({
@@ -23,6 +38,9 @@ const Contact = () => {
       subject: "",
       city: "",
       message: "",
+      religion: "",
+      gender: "",
+      skill: [],
     });
   };
 
@@ -34,6 +52,7 @@ const Contact = () => {
       const response = await fetch(
         "https://official-joke-api.appspot.com/jokes/random"
       );
+      console.log(contactData);
     } catch (error) {
       console.log(error.message);
     } finally {
@@ -76,7 +95,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <label htmlFor="phone">Email</label>
+              <label htmlFor="phone">Phone</label>
               <input
                 type="number"
                 name="phone"
@@ -90,7 +109,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <label htmlFor="subject">Email</label>
+              <label htmlFor="subject">Subject</label>
               <input
                 type="text"
                 name="subject"
@@ -104,7 +123,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <label htmlFor="city">Email</label>
+              <label htmlFor="city">City</label>
               <input
                 type="text"
                 name="city"
@@ -115,6 +134,105 @@ const Contact = () => {
                 className="text-primary"
                 required
               />
+            </div>
+
+            <div>
+              <label htmlFor="religion">Religion</label>
+              <select name="religion" id="religion" onChange={handleChange}>
+                <option value="">--Select Religion--</option>
+                <option value="islam">Islam</option>
+                <option value="hinduism">Hinduism</option>
+                <option value="christianity">Christianity</option>
+                <option value="byddgusn">Buddism</option>
+                <option value="jainism">Jainism</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div>
+              <label htmlFor="gender">Gender</label>
+              <input
+                type="radio"
+                name="gender"
+                value="male"
+                onChange={handleChange}
+                checked={contactData.gender === "male"}
+              />{" "}
+              Male
+              <input
+                type="radio"
+                name="gender"
+                value="female"
+                onChange={handleChange}
+                checked={contactData.gender === "female"}
+              />{" "}
+              Female
+              <input
+                type="radio"
+                name="gender"
+                value="other"
+                onChange={handleChange}
+                checked={contactData.gender === "other"}
+              />{" "}
+              Other
+            </div>
+
+            <div>
+              <label htmlFor="skill"></label>
+              <input
+                type="checkbox"
+                name="skill"
+                value="html"
+                onChange={handleChange}
+                checked={
+                  Object.values(contactData.skill).find(
+                    (word) => word === "html"
+                  )
+                    ? true
+                    : false
+                }
+              />{" "}
+              HTML
+              <input
+                type="checkbox"
+                name="skill"
+                value="css"
+                onChange={handleChange}
+                checked={
+                  Object.values(contactData.skill).find(
+                    (word) => word === "css"
+                  )
+                    ? true
+                    : false
+                }
+              />{" "}
+              CSS
+              <input
+                type="checkbox"
+                name="skill"
+                value="js"
+                onChange={handleChange}
+                checked={
+                  Object.values(contactData.skill).find((word) => word === "js")
+                    ? true
+                    : false
+                }
+              />{" "}
+              JS
+              <input
+                type="checkbox"
+                name="skill"
+                value="react"
+                onChange={handleChange}
+                checked={
+                  Object.values(contactData.skill).find(
+                    (word) => word === "react"
+                  )
+                    ? true
+                    : false
+                }
+              />{" "}
+              React
             </div>
 
             <div>
