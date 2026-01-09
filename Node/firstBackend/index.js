@@ -2,8 +2,15 @@ import dotenv from 'dotenv'
 dotenv.config();
 
 import express from 'express'
+import connectDB from "./src/config/db.js"
+import AuthRouter from "./src/routers/myRouter.js"
 
 const app=express(); //creating an object of express without using new keyword
+
+app.use(express.json());
+app.use("/auth",AuthRouter);
+
+
 
 app.get("/",(req,res)=>{
     console.log("Server is Running");
@@ -15,6 +22,7 @@ const port=process.env.PORT || 5000; // if env port is not available then it wil
 
 app.listen(port,()=>{
     console.log("Server started at port", port);
+    connectDB();
     
 })
 
