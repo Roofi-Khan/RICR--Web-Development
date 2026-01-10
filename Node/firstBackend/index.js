@@ -10,6 +10,14 @@ const app=express(); //creating an object of express without using new keyword
 app.use(express.json());
 app.use("/auth",AuthRouter);
 
+app.use((err,req,res,next)=>{
+    const ErrorMessage=err.message || "Internal Server Error";
+    const StatusCode= err.statusCode || 500;
+
+    res.status(StatusCode).json({message:ErrorMessage});
+})
+
+
 
 
 app.get("/",(req,res)=>{
