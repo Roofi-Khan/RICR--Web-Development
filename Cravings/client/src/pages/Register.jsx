@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import api from "../config/Api.jsx"
+import api from "../config/Api";
 
 const Register = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     mobileNumber: "",
-    
+    password: "",
+    confirmPassword: "",
   });
   const [isLoading, setIsLoading] = useState(false);
   const [validationError, setValidationError] = useState({});
@@ -22,7 +23,8 @@ const Register = () => {
       fullName: "",
       email: "",
       mobileNumber: "",
-     
+      password: "",
+      confirmPassword: "",
     });
   };
 
@@ -54,7 +56,7 @@ const Register = () => {
     return Object.keys(Error).length > 0 ? false : true;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
@@ -64,9 +66,10 @@ const Register = () => {
       return;
     }
 
+    console.log(formData)
     try {
-      console.log(formData);
-      toast.success("Regisrtation Successfull");
+      const res = await api.post("/auth/register", formData);
+      toast.success(res.data.message);
       handleClearForm();
     } catch (error) {
       console.log(error);
@@ -79,14 +82,14 @@ const Register = () => {
   return (
     <>
       <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 py-6 px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold text-gray-900 mb-2">
-              Student Registration
+              Registration
             </h1>
             <p className="text-lg text-gray-600">
-              Join our academy and start your learning journey
+              You are 1 step away to stop your Cavings
             </p>
           </div>
 
@@ -99,10 +102,7 @@ const Register = () => {
             >
               {/* Personal Information */}
               <div className="mb-10">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6 pb-3 border-b-2 border-indigo-500">
-                  Personal Information
-                </h2>
-                <div className="space-y-2 gap-6">
+                <div className="space-y-4">
                   <div>
                     <input
                       type="text"
@@ -111,7 +111,8 @@ const Register = () => {
                       value={formData.fullName}
                       onChange={handleChange}
                       required
-                      className="w-full h-fit px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition"
+                      disabled={isLoading}
+                      className="w-full h-fit px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disabled:bg-gray-300"
                     />
                     {validationError.fullName && (
                       <span className="text-xs text-red-500">
@@ -126,7 +127,8 @@ const Register = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full h-fit px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition"
+                    disabled={isLoading}
+                    className="w-full h-fit px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disabled:bg-gray-300"
                   />
                   <input
                     type="tel"
@@ -136,26 +138,47 @@ const Register = () => {
                     value={formData.mobileNumber}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition"
+                    disabled={isLoading}
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disabled:bg-gray-300"
                   />
-                 
+                  <input
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    placeholder="Create Password"
+                    onChange={handleChange}
+                    required
+                    disabled={isLoading}
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disabled:bg-gray-300"
+                  />
+                  <input
+                    type="password"
+                    name="confirmPassword"
+                    placeholder="Confirm Password"
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    required
+                    disabled={isLoading}
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disabled:bg-gray-300"
+                  />
                 </div>
               </div>
 
-            
               {/* Submit Button */}
               <div className="flex gap-4 pt-8 border-t-2 border-gray-200">
                 <button
-                  type="submit"
-                  className="flex-1 bg-linear-to-r from-indigo-600 to-indigo-700 text-white font-bold py-4 px-6 rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition duration-300 transform hover:scale-105 shadow-lg"
-                >
-                  Submit Registration
-                </button>
-                <button
                   type="reset"
-                  className="flex-1 bg-gray-300 text-gray-800 font-bold py-4 px-6 rounded-lg hover:bg-gray-400 transition duration-300 transform hover:scale-105"
+                  disabled={isLoading}
+                  className="flex-1 bg-gray-300 text-gray-800 font-bold py-4 px-6 rounded-lg hover:bg-gray-400 transition duration-300 transform hover:scale-105 disabled:cursor-not-allowed disabled:scale-100 disabled:bg-gray-300"
                 >
                   Clear Form
+                </button>
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="flex-1 bg-linear-to-r from-indigo-600 to-indigo-700 text-white font-bold py-4 px-6 rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition duration-300 transform hover:scale-105 shadow-lg disabled:cursor-not-allowed"
+                >
+                  {isLoading?"Submitting" :"Submit"}
                 </button>
               </div>
             </form>
