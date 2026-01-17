@@ -66,7 +66,7 @@ const Register = () => {
       return;
     }
 
-    console.log(formData)
+    console.log(formData);
     try {
       const res = await api.post("/auth/register", formData);
       toast.success(res.data.message);
@@ -178,7 +178,7 @@ const Register = () => {
                   disabled={isLoading}
                   className="flex-1 bg-linear-to-r from-indigo-600 to-indigo-700 text-white font-bold py-4 px-6 rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition duration-300 transform hover:scale-105 shadow-lg disabled:cursor-not-allowed"
                 >
-                  {isLoading?"Submitting" :"Submit"}
+                  {isLoading ? "Submitting" : "Submit"}
                 </button>
               </div>
             </form>
