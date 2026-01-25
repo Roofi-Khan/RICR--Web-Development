@@ -7,6 +7,37 @@ import { useAuth } from "../context/AuthContext";
 const Header = () => {
   const { user, isLogin } = useAuth();
   const navigate = useNavigate();
+
+
+  const handleNavigate =()=>{
+    switch (role) {
+        case "manager": {
+         
+          navigate("/restaurant-dashboard");
+          break;
+        }
+
+        case "partner": {
+          
+          navigate("/rider-dashboard");
+          break;
+        }
+
+        case "customer": {
+        
+          navigate("/user-dashboard");
+          break;
+        }
+        case "admin": {
+         
+          navigate("/admin-dashboard");
+          break;
+        }
+        default:
+          break;
+      }
+  }
+
   return (
     <>
       <div className="bg-(--color-primary) px-4 py-2 flex justify-between items-center">
@@ -39,7 +70,7 @@ const Header = () => {
         </div>
         <div className="flex gap-4">
           {isLogin ? (
-            <div className="text-red-500 cursor-pointer" onClick={()=>navigate("/user-dashboard")}>{user.fullName}</div>
+            <div className="text-red-500 cursor-pointer" onClick={handleNavigate}>{user.fullName}</div>
           ) : (
             <>
               <button

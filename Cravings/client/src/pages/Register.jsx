@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import toast from "react-hot-toast";
+import toast, { resolveValue } from "react-hot-toast";
 import api from "../config/Api";
 
 const Register = () => {
@@ -9,12 +9,14 @@ const Register = () => {
     mobileNumber: "",
     password: "",
     confirmPassword: "",
+    role: "",
   });
   const [isLoading, setIsLoading] = useState(false);
   const [validationError, setValidationError] = useState({});
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value} = e.target;
+
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -25,6 +27,7 @@ const Register = () => {
       mobileNumber: "",
       password: "",
       confirmPassword: "",
+      role: "",
     });
   };
 
@@ -41,7 +44,7 @@ const Register = () => {
 
     if (
       !/^[\w\.]+@(gmail|outlook|ricr|yahoo)\.(com|in|co.in)$/.test(
-        formData.email
+        formData.email,
       )
     ) {
       Error.email = "Use Proper Email Format";
@@ -51,6 +54,9 @@ const Register = () => {
       Error.mobileNumber = "Only Indian Mobile Number allowed";
     }
 
+    if (!role) {
+      Error.role = "Please choose any one";
+    }
     setValidationError(Error);
 
     return Object.keys(Error).length > 0 ? false : true;
@@ -103,6 +109,51 @@ const Register = () => {
               {/* Personal Information */}
               <div className="mb-10">
                 <div className="space-y-4">
+                 <div >
+                   <div className="flex items-center justify-around">
+                    <label>I am</label>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="radio"
+                        name="role"
+                        id="manager"
+                        checked={formData.role === "manager"}
+                        value={"manager"}
+                        onChange={handleChange}
+                      />
+                      <label htmlFor="manager">Restaurant Manager</label>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="radio"
+                        name="role"
+                        id="partner"
+                        checked={formData.role === "partner"}
+                        value={"partner"}
+                        onChange={handleChange}
+                      />
+                      <label htmlFor="partner">Delivery partner</label>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="radio"
+                        name="role"
+                        id="customer"
+                        checked={formData.role === "customer"}
+                        value={"customer"}
+                        onChange={handleChange}
+                      />
+                      <label htmlFor="customer">Customer</label>
+                    </div>
+                  </div>
+                   {validationError.role && (
+                      <span className="text-xs text-red-500">
+                        {validationError.role}
+                      </span>
+                    )}
+                 </div>
                   <div>
                     <input
                       type="text"

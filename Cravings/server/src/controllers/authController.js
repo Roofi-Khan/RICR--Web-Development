@@ -5,15 +5,15 @@ import { genToken } from "../utils/authToken.js";
 export const UserRegister= async (req,res,next)=>{
     try {
         console.log(req.body)
-        const {fullName,email,mobileNumber,password} = req.body;
+        const {fullName,email,mobileNumber,password ,role} = req.body;
 
          //verify that all data exists
-        if(!fullName || !email || !mobileNumber || !password){
+        if(!fullName || !email || !mobileNumber || !password || !role){
             const error = new Error("All feilds required")
             error.statusCode = 400
             return next(error);
         }
-        console.log({fullName,email,mobileNumber,password});
+        console.log({fullName,email,mobileNumber,password,role});
         
 
         //Check for duplicate user before registration
@@ -40,6 +40,7 @@ export const UserRegister= async (req,res,next)=>{
             email,
             mobileNumber,
             password:hashpassword,
+            role,
         });
 
         //send response to Frontend
@@ -100,7 +101,9 @@ export const UserLogin= async (req,res,next)=>{
 
 export const UserLogout= async (req,res,next)=>{
     try {
+        res.clearCookie("parleG");
         res.status(200).json({message:'Logout Successfull'})
+
     } catch (error) {
         next(error)
     }

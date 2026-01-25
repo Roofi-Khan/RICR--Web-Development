@@ -9,15 +9,20 @@ export const Protect = async(req,res,next)=>{
         const tea = jwt.verify(biscuit,process.env.JWT_SECRET)
         console.log(tea);
 
-        const verifiedUser = await findById(tea.id);
+        if(!tea){
+            const error = new Error("Unauthorised! Please Login Again");
+            error.statusCode=401;
+            return next(error);
+        }
+
+        const verifiedUser = await User.findById(tea.id);
         if(!verifiedUser){
-            const error = new Error("Unauthorixed! Please Login Again")
+            const error = new Error("Unauthorised! Please Login Again")
             error.statusCode = 401;
             return next(error);
         }
 
         req.user = verifiedUser;
-
         next();
     } catch (error) {
         next(error)

@@ -8,6 +8,11 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { Toaster } from "react-hot-toast";
 import UserDashboard from "./pages/dashboards/UserDashboard";
+import RiderDashboard from "./pages/dashboards/RiderDashboard";
+import RestaurantDashboard from "./pages/dashboards/RestaurantDashboard"
+import AdminDashboard from "./pages/dashboards/AdminDashboard"
+
+
 
 const App = () => {
   return (
@@ -15,13 +20,16 @@ const App = () => {
       <BrowserRouter>
         <Toaster />
         <Header />
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/about" element={<About />}></Route>
-          <Route path="/contact" element={<Contact />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/register" element={<Register />}></Route>
-          <Route path="/user-dashboard" element={<UserDashboard />}></Route>
+       <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/user-dashboard" element={<UserDashboard />} />
+          <Route path="/rider-dashboard" element={<RiderDashboard />} />
+          <Route path="/resturant-dashboard" element={<RestaurantDashboard />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
         </Routes>
       </BrowserRouter>
     </>

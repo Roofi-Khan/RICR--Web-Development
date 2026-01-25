@@ -10,6 +10,27 @@ import UserOrders from "../../components/userDashboard/UserOrders";
 const UserDashboard = () => {
   const [active, setActive] = useState("overview");
   const [isCollapsed, setIsCollapsed] = useState(false);
+
+  useEffect(() => {
+    if (!isLogin) {
+      navigate("/login");
+    }
+  });
+
+  if (role !== "customer") {
+    return (
+      <>
+        <div className="p-3">
+          <div className="border shadow rounde p-5 w-4xl mx-auto text-center bg-grey-100">
+            <div>⊗</div>
+            <div className="text-xl">
+              You are not logged in as Customer. Please Login again.
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
   return (
     <>
       <div className="w-full h-[90vh] flex">
@@ -31,6 +52,7 @@ const UserDashboard = () => {
           {active === "orders" && <UserOrders />}
           {active === "transactions" && <UserTransactions />}
           {active === "helpdesk" && <UserHelpDesk />}
+          
         </div>
       </div>
     </>
