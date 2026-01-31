@@ -105,3 +105,11 @@ export const UserLogout = async (req, res, next) => {
     next(error);
   }
 };
+
+export const UserGenOTP = async(req,res,next)=>{
+  try {
+    
+  } catch (error) {
+  
+  }
+}
