@@ -54,7 +54,7 @@ const Register = () => {
       Error.mobileNumber = "Only Indian Mobile Number allowed";
     }
 
-    if (!role) {
+    if (!formData.role) {
       Error.role = "Please choose any one";
     }
     setValidationError(Error);
