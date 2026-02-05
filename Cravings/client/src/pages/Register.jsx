@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import toast, { resolveValue } from "react-hot-toast";
+import toast from "react-hot-toast";
 import api from "../config/Api";
 
 const Register = () => {

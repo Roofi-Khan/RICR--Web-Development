@@ -1,19 +1,18 @@
 import express from "express";
-import {
-  UserUpdate,
-  UserChangePhoto,
-  UserResetPassword,
-} from "../controllers/userController.js";
-import { Protect } from "../middlewares/authMiddleware.js";
 import multer from "multer";
 
+import { RestaurantAddMenuItem } from "../controllers/restaurantController.js";
+import { ManagerProtect, Protect } from "../middlewares/authMiddleware.js";
+
 const router = express.Router();
-const Uploads = multer();
+const upload = multer();
 
-router.put("/update", Protect, UserUpdate);
-router.patch("/changePhoto", Protect, Uploads.single("image"), UserChangePhoto);
-router.patch("/resetPassword", Protect, UserResetPassword);
-
-
+router.post(
+  "/addMenuItem",
+  Protect,
+  ManagerProtect,
+  upload.array("itemImages", 5),
+  RestaurantAddMenuItem,
+);
 
 export default router;
