@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import api from "../config/Api"
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -71,7 +72,7 @@ const Register = () => {
     try {
         console.log("Form try catch successfully")
                    
-      //   const res = await api.post("auth/register", formData);
+        const res = await api.post("/auth/register", formData);
       console.log(formData);
       toast.success(res.data.message);
       handleClearForm();
