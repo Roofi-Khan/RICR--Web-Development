@@ -144,11 +144,3 @@ const userSchema = mongoose.Schema(
 
 const User = mongoose.model("User", userSchema);
 export default User;
-
-// type: String,
-      // required() {
-      //   return this.role === "manager";
-      // },
-      // default() {
-      //   return this.role === "manager" ? "N/A" : null;
-      // },

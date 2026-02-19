@@ -1,5 +1,7 @@
 import Contact from "../models/contactModel.js";
+import Menu from "../models/menuSchema.js";
 import User from "../models/userModel.js";
+
 
 export const NewContact = async (req, res, next) => {
   try {
@@ -31,14 +33,38 @@ export const NewContact = async (req, res, next) => {
 
 export const GetAllRestaurants = async (req, res, next) => {
   try {
-    const restaurants = await User
-      .find({ role: "manager" })
-      .select("-password");
+    const restaurants = await User.find({ role: "manager" }).select(
+      "-password",
+    );
 
     res.status(200).json({
       message: "Restaurants fetched successfully",
       data: restaurants,
     });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const GetRestaurantMenuData = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    if (!id) {
+      const error = new Error("All feilds required");
+      error.statusCode = 400;
+      return next(error);
+    }
+
+    const restaurantMenuData = await Menu.find({
+      restaurantID: id,
+    })
+      .sort({ updatedAt: -1 })
+      .populate("restaurantID");
+
+    res
+      .status(200)
+      .json({ message: "Menu fetched Sucessfully", data: restaurantMenuData });
   } catch (error) {
     next(error);
   }
