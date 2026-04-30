@@ -1,38 +1,36 @@
-import React from 'react'
-import UserGreeting from './components/UserGreeting'
-import Forms from './components/Forms'
+import React from "react";
+import Navbar from "./components/Navbar";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Dashboard from "./pages/Dashboard";
+import UserProfile from "./pages/UserProfile";
+import ProtectedRoutes from "./layout/ProtectedRoutes";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
     <>
-    <Forms/>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/about" element={<About />}></Route>
+        <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route
+          path="/userprofile/:userId"
+          element={
+            <ProtectedRoutes>
+              <UserProfile />
+            </ProtectedRoutes>
+          }
+        ></Route>
+        <Route path="*" element={<NotFound />}></Route>
+      </Routes>
     </>
-  )
-}
+  );
+};
 
-export default App
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default App;
 
 //For Understanding Props Day-37
 {
@@ -54,7 +52,6 @@ export default App
 }
 
 //  For Understanding useState DAY-38
-
 
 // import Card from "./components/Card";
 // import { useState } from "react";
